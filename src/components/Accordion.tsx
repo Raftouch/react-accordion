@@ -5,9 +5,12 @@ export default function Accordion() {
 
   return (
     <div className="py-2">
-      <button className="flex w-full justify-between">
+      <button
+        onClick={() => setAccordionOpen(!accordionOpen)}
+        className="flex w-full justify-between"
+      >
         <span>Title</span>
-        <span>+</span>
+        {accordionOpen ? <span>-</span> : <span>+</span>}
       </button>
       <div
         className={`grid overflow-hidden transition-all duration-300 ease-in-out text-slate-900 text-sm ${
@@ -16,7 +19,7 @@ export default function Accordion() {
             : 'grid-rows-[0fr] opacity-0'
         }`}
       >
-        <div className='overflow-hidden'>Answer</div>
+        <div className="overflow-hidden">Answer</div>
       </div>
     </div>
   )
