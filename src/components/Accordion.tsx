@@ -1,6 +1,11 @@
 import { useState } from 'react'
 
-export default function Accordion() {
+interface AccordionProps {
+  title: string
+  answer: string
+}
+
+export default function Accordion({ title, answer }: AccordionProps) {
   const [accordionOpen, setAccordionOpen] = useState(false)
 
   return (
@@ -9,7 +14,7 @@ export default function Accordion() {
         onClick={() => setAccordionOpen(!accordionOpen)}
         className="flex w-full justify-between"
       >
-        <span>Title</span>
+        <span>{title}</span>
         {accordionOpen ? <span>-</span> : <span>+</span>}
       </button>
       <div
@@ -19,7 +24,7 @@ export default function Accordion() {
             : 'grid-rows-[0fr] opacity-0'
         }`}
       >
-        <div className="overflow-hidden">Answer</div>
+        <div className="overflow-hidden">{answer}</div>
       </div>
     </div>
   )
